@@ -12,7 +12,6 @@ import {
 } from '../ui/dropdown-menu';
 
 const navItems = [
-  { label: 'Home', href: '/' },
   { label: 'About', href: '/about' },
   {
     label: 'Service',
@@ -49,6 +48,7 @@ const navItems = [
 
 export function NavBar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const handleMouseEnter = (label: string) => {
@@ -69,7 +69,13 @@ export function NavBar() {
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white text-slate-900 shadow-sm">
       <div className="mx-auto flex w-full max-w-6xl items-center gap-6 px-4 py-4">
         <div className="flex flex-1 justify-start">
-          <img src={ajarLogo} alt="AJAR Growth Collective" className="h-12 w-auto object-contain" />
+          <Link to="/">
+            <img
+              src={ajarLogo}
+              alt="AJAR Growth Collective"
+              className="h-12 w-auto object-contain cursor-pointer"
+            />
+          </Link>
         </div>
 
         <div className="hidden flex-1 items-center justify-center gap-4 lg:flex">
@@ -79,7 +85,7 @@ export function NavBar() {
                 key={item.label}
                 open={activeMenu === item.label}
                 onOpenChange={(open) => {
-                   if (!open) handleMouseLeave();
+                  if (!open) handleMouseLeave();
                 }}
                 modal={false}
               >
@@ -95,7 +101,7 @@ export function NavBar() {
                   onMouseEnter={() => handleMouseEnter(item.label)}
                   onMouseLeave={handleMouseLeave}
                   align="center"
-                  className="w-[40rem] border border-slate-200 bg-white p-2 text-slate-900 shadow-2xl"
+                  className="w-160 border border-slate-200 bg-white p-2 text-slate-900 shadow-2xl"
                   sideOffset={8}
                 >
                   <DropdownMenuLabel className="mb-1">{item.description}</DropdownMenuLabel>
@@ -119,7 +125,7 @@ export function NavBar() {
               <Link
                 key={item.label}
                 to={item.href || '#'}
-                className="inline-flex items-center gap-2 rounded-full border border-transparent px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.35em] text-slate-600 transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
+                className="inline-flex items-center gap-2 rounded-full border border-transparent px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.35em] text-slate-600 whitespace-nowrap transition hover:border-slate-300 hover:bg-slate-50 hover:text-slate-900"
               >
                 {item.label}
               </Link>
@@ -138,53 +144,53 @@ export function NavBar() {
           <button className="rounded-full border border-slate-300 p-2 text-slate-900">
             <Globe className="h-4 w-4" />
           </button>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="rounded-full border border-slate-300 p-2 text-slate-900">
-                <Menu className="h-5 w-5" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              align="end"
-              className="w-64 space-y-2 border border-slate-200 bg-white text-slate-900 shadow-2xl"
-            >
-              {navItems.map((item, index) =>
-                item.items ? (
-                  <div key={item.label}>
-                    <DropdownMenuLabel className="text-[11px] text-slate-500">
-                      {item.label}
-                    </DropdownMenuLabel>
-                    {item.items.map((subItem) => (
-                      <DropdownMenuItem
-                        key={`${item.label}-${subItem.title}`}
-                        className="flex flex-col items-start gap-1 rounded-lg border border-transparent px-3 py-3 text-slate-700 hover:border-slate-200 hover:bg-slate-50 focus:bg-slate-50 focus:text-slate-900"
-                      >
-                        <span className="text-sm font-semibold text-slate-900">
-                          {subItem.title}
-                        </span>
-                        <span className="text-xs text-slate-500">{subItem.body}</span>
-                      </DropdownMenuItem>
-                    ))}
-                    {index !== navItems.length - 1 && <DropdownMenuSeparator />}
-                  </div>
-                ) : (
-                  <div key={item.label}>
-                    <DropdownMenuItem asChild>
-                      <Link
-                        to={item.href || '#'}
-                        className="flex w-full items-center rounded-lg border border-transparent px-3 py-3 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-900 hover:bg-slate-50"
-                      >
-                        {item.label}
-                      </Link>
-                    </DropdownMenuItem>
-                    {index !== navItems.length - 1 && <DropdownMenuSeparator />}
-                  </div>
-                )
-              )}
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <button
+            className="rounded-full border border-slate-300 p-2 text-slate-900"
+            onClick={() => setIsMobileOpen((prev) => !prev)}
+            aria-label="Toggle navigation menu"
+            aria-expanded={isMobileOpen}
+          >
+            <Menu className="h-5 w-5" />
+          </button>
         </div>
       </div>
+      {isMobileOpen && (
+        <nav className="mx-auto w-full max-w-6xl border-t border-slate-200 bg-white px-4 pb-4 pt-2 lg:hidden">
+          <div className="space-y-3">
+            {navItems.map((item) =>
+              item.items ? (
+                <div key={item.label} className="space-y-1">
+                  <p className="text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-500">
+                    {item.label}
+                  </p>
+                  <div className="space-y-1 rounded-2xl border border-slate-100 bg-slate-50/60 p-2">
+                    {item.items.map((subItem) => (
+                      <div
+                        key={`${item.label}-${subItem.title}`}
+                        className="rounded-xl px-3 py-2 text-left text-slate-700 hover:bg-white"
+                      >
+                        <p className="text-sm font-semibold text-slate-900">
+                          {subItem.title}
+                        </p>
+                        <p className="text-xs text-slate-500">{subItem.body}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.label}
+                  to={item.href || '#'}
+                  onClick={() => setIsMobileOpen(false)}
+                  className="flex w-full items-center rounded-full border border-slate-200 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.15em] text-slate-900 whitespace-nowrap hover:border-slate-900 hover:bg-slate-50"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
+          </div>
+        </nav>
+      )}
     </header>
   );
 }
