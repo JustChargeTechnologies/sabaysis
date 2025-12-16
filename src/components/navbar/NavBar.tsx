@@ -73,7 +73,8 @@ export function NavBar() {
             <img
               src={ajarLogo}
               alt="AJAR Growth Collective"
-              className="h-12 w-auto object-contain cursor-pointer"
+              className="h-12 w-48 object-stretch cursor-pointer"
+              style={{ fontWeight: 'bold' }}
             />
           </Link>
         </div>
