@@ -1,5 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Maintenance } from './pages/Maintenance';
+import { ContactUs } from './pages/ContactUs';
 import { NavBar } from './components/navbar/NavBar';
 
 function App() {
@@ -8,6 +11,9 @@ function App() {
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/maintenance" element={<Maintenance />} />
+        <Route path="/contact-us" element={<ContactUs />} />
       </Routes>
     </div>
   );
