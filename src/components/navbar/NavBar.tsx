@@ -7,40 +7,53 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
+import { services, products } from '@/data/catalog';
 
-const navItems = [
+type NavSubItem = {
+  title: string;
+  body: string;
+  slug: string;
+};
+
+type NavItem =
+  | {
+    label: string;
+    href: string;
+  }
+  | {
+    label: string;
+    description: string;
+    basePath: string;
+    items: NavSubItem[];
+  };
+
+const serviceNavItems: NavSubItem[] = services.map((s) => ({
+  title: s.title,
+  body: s.body,
+  slug: s.slug,
+}));
+
+const productNavItems: NavSubItem[] = products.map((p) => ({
+  title: p.title,
+  body: p.body,
+  slug: p.slug,
+}));
+
+const navItems: NavItem[] = [
   { label: 'About', href: '/about' },
   {
     label: 'Service',
     description: 'Sports • Infrastructure',
-    items: [
-      { title: 'Box Cricket', body: 'Premium turf for intense matches.' },
-      { title: 'Volleyball Court', body: 'Standard courts for pro play.' },
-      { title: 'Basketball Court', body: 'High-quality flooring systems.' },
-      { title: 'Pickleball Court', body: 'Trending racket sport surfacing.' },
-      { title: 'Football Court', body: 'FIFA-standard artificial turf.' },
-      { title: 'Paddleball Court', body: 'Durable courts for fast action.' },
-      { title: 'Badminton Court', body: 'Shock-absorbing wooden floors.' },
-      { title: 'Swimming Pool', body: 'Temperature-controlled pools.' },
-      { title: 'Tennis Court', body: 'Acrylic, clay, and synth courts.' },
-      { title: 'Multisport Tracks', body: 'All-weather athletic tracks.' },
-    ],
+    basePath: '/services',
+    items: serviceNavItems,
   },
   {
     label: 'Products',
     description: 'Turf • Nets • Equipment',
-    items: [
-      { title: 'Sports Net', body: 'High-quality safety and practice nets.' },
-      { title: 'Football Turf', body: 'Professional-grade football surfaces.' },
-      { title: 'Cricket Turf', body: 'Durable turf for cricket pitches.' },
-      { title: 'Artificial Grass', body: 'Lush, low-maintenance synthetic grass.' },
-      { title: 'Landscape Turf', body: 'Aesthetic solutions for outdoor spaces.' },
-      { title: 'Outdoor Gym', body: 'Robust fitness gear for parks.' },
-      { title: 'Pitch Equipment', body: 'Essential gear for pitch maintenance.' },
-    ],
+    basePath: '/products',
+    items: productNavItems,
   },
   { label: 'Maintenance', href: '/maintenance' },
   { label: 'Contact Us', href: '/contact-us' },
@@ -68,20 +81,20 @@ export function NavBar() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-slate-200 bg-white/95 backdrop-blur-sm text-slate-900 shadow-sm transition-all">
       <div className="mx-auto flex h-20 w-full max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        
+
         <div className="flex shrink-0 items-center">
           <Link to="/" className="flex items-center">
             <img
               src={ajarLogo}
               alt="AJAR "
-              className="h-14 w-auto object-contain sm:h-12" 
+              className="h-14 w-auto object-contain sm:h-12"
             />
           </Link>
         </div>
 
         <div className="hidden h-full items-center gap-6 lg:flex">
           {navItems.map((item) =>
-            item.items ? (
+            'items' in item ? (
               <DropdownMenu
                 key={item.label}
                 open={activeMenu === item.label}
@@ -90,9 +103,9 @@ export function NavBar() {
                 }}
                 modal={false}
               >
-                <div 
+                <div
                   className="h-full flex items-center"
-                  onMouseEnter={() => handleMouseEnter(item.label)} 
+                  onMouseEnter={() => handleMouseEnter(item.label)}
                   onMouseLeave={handleMouseLeave}
                 >
                   <DropdownMenuTrigger asChild>
@@ -113,27 +126,26 @@ export function NavBar() {
                     <DropdownMenuLabel className="text-sm font-bold text-slate-900">
                       {item.label}
                     </DropdownMenuLabel>
-                    <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
-                      {item.description}
-                    </span>
+                    {'description' in item && (
+                      <span className="text-xs font-medium text-slate-500 uppercase tracking-wider">
+                        {item.description}
+                      </span>
+                    )}
                   </div>
-                  
+
                   <div className="grid grid-cols-2 gap-2">
-                    {item.items.map((subItem) => (
-                      <DropdownMenuItem
-                        key={subItem.title}
-                        asChild
-                      >
-                         <Link 
-                            to="#" 
-                            className="flex cursor-pointer flex-col items-start gap-0.5 rounded-lg p-3 outline-none transition-colors hover:bg-slate-50 focus:bg-slate-50"
-                         >
-                            <span className="text-sm font-semibold text-slate-900">
-                              {subItem.title}
-                            </span>
-                            <span className="text-xs text-slate-500 line-clamp-1">
-                              {subItem.body}
-                            </span>
+                    {item.items.map((subItem: NavSubItem) => (
+                      <DropdownMenuItem key={subItem.title} asChild>
+                        <Link
+                          to={`${item.basePath}/${subItem.slug}`}
+                          className="flex cursor-pointer flex-col items-start gap-0.5 rounded-lg p-3 outline-none transition-colors hover:bg-slate-50 focus:bg-slate-50"
+                        >
+                          <span className="text-sm font-semibold text-slate-900">
+                            {subItem.title}
+                          </span>
+                          <span className="text-xs text-slate-500 line-clamp-1">
+                            {subItem.body}
+                          </span>
                         </Link>
                       </DropdownMenuItem>
                     ))}
@@ -162,9 +174,9 @@ export function NavBar() {
 
         {/* MOBILE TOGGLE */}
         <div className="flex items-center gap-4 lg:hidden">
-            <button className="rounded-full border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-50">
-              <Globe className="h-4 w-4" />
-            </button>
+          <button className="rounded-full border border-slate-200 p-2 text-slate-700 transition hover:bg-slate-50">
+            <Globe className="h-4 w-4" />
+          </button>
           <button
             className="flex h-10 w-10 items-center justify-center rounded-md border border-slate-200 text-slate-900 transition hover:bg-slate-50"
             onClick={() => setIsMobileOpen((prev) => !prev)}
@@ -180,16 +192,16 @@ export function NavBar() {
         <div className="border-t border-slate-100 bg-white lg:hidden">
           <nav className="mx-auto max-w-7xl space-y-4 p-4">
             {navItems.map((item) =>
-              item.items ? (
+              'items' in item ? (
                 <div key={item.label} className="space-y-2">
                   <p className="px-2 text-xs font-bold uppercase tracking-widest text-slate-400">
                     {item.label}
                   </p>
                   <div className="grid grid-cols-1 gap-1 rounded-xl bg-slate-50 p-2">
-                    {item.items.map((subItem) => (
+                    {item.items.map((subItem: NavSubItem) => (
                       <Link
                         key={`${item.label}-${subItem.title}`}
-                        to="#"
+                        to={`${item.basePath}/${subItem.slug}`}
                         onClick={() => setIsMobileOpen(false)}
                         className="rounded-lg px-3 py-2 transition hover:bg-white hover:shadow-sm"
                       >
@@ -212,12 +224,12 @@ export function NavBar() {
                 </Link>
               )
             )}
-             <div className="pt-4">
-                <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-900 py-3 text-xs font-bold uppercase tracking-widest text-white">
-                  <Globe className="h-4 w-4" />
-                  Visit Global Site
-                </button>
-             </div>
+            <div className="pt-4">
+              <button className="flex w-full items-center justify-center gap-2 rounded-lg bg-slate-900 py-3 text-xs font-bold uppercase tracking-widest text-white">
+                <Globe className="h-4 w-4" />
+                Visit Global Site
+              </button>
+            </div>
           </nav>
         </div>
       )}
