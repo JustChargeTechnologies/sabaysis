@@ -1,4 +1,8 @@
+import { MapPin, Phone, Mail } from 'lucide-react';
+import { usePageTitle } from '@/hooks/usePageTitle';
+
 export function ContactUs() {
+  usePageTitle('Contact Us');
   return (
     <div className="min-h-screen bg-white text-slate-900">
       <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16">
@@ -26,8 +30,9 @@ export function ContactUs() {
               </h2>
               <dl className="mt-4 space-y-4 text-sm text-slate-700">
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
-                    Address
+                  <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+                    <MapPin className="h-4 w-4 text-emerald-700" />
+                    <span>Address</span>
                   </dt>
                   <dd className="mt-1">
                     Tiwari Quarters, Phase 2, Kesharganj,
@@ -36,8 +41,9 @@ export function ContactUs() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
-                    Phone Number
+                  <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+                    <Phone className="h-4 w-4 text-emerald-700" />
+                    <span>Phone Number</span>
                   </dt>
                   <dd className="mt-1">
                     <a href="tel:+919897053591" className="text-emerald-700 hover:underline">
@@ -46,8 +52,9 @@ export function ContactUs() {
                   </dd>
                 </div>
                 <div>
-                  <dt className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
-                    Email ID
+                  <dt className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+                    <Mail className="h-4 w-4 text-emerald-700" />
+                    <span>Email ID</span>
                   </dt>
                   <dd className="mt-1">
                     <a
@@ -132,7 +139,7 @@ export function ContactUs() {
               at Tiwari Quarters, Phase 2, Kesharganj.
             </p>
             <div className="overflow-hidden rounded-3xl border border-slate-200 bg-slate-100 shadow-sm">
-              <div className="relative h-72 w-full md:h-full md:min-h-[380px]">
+              <div className="relative h-80 w-full md:h-[420px] lg:h-[480px]">
                 <iframe
                   title="Sabaysis Sports & Infra Location"
                   src="https://www.google.com/maps?q=28.860397,77.635107&z=14&output=embed"

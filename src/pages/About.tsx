@@ -1,4 +1,7 @@
+import { usePageTitle } from '@/hooks/usePageTitle';
+
 export function About() {
+  usePageTitle('About');
   return (
     <div className="min-h-screen bg-white text-slate-900">
       {/* Hero */}

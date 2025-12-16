@@ -3,8 +3,10 @@ import { HeroCarousel } from '@/components/home/HeroCarousel';
 import { PrimaryCTA } from '@/components/home/PrimaryCTA';
 import { Testimonials } from '@/components/home/Testimonials';
 import { ValueProps } from '@/components/home/ValueProps';
+import { usePageTitle } from '@/hooks/usePageTitle';
 
 export function Home() {
+  usePageTitle('Home');
   return (
     <div className="min-h-screen bg-white font-sans text-slate-900">
       <HeroCarousel />
