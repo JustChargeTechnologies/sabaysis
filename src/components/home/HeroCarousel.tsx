@@ -70,7 +70,7 @@ export function HeroCarousel() {
   }, [activeIndex]);
 
   return (
-    <section className="relative h-[calc(100vh-5rem)] w-full overflow-hidden bg-slate-900 text-white">
+    <section className="relative h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)] w-full overflow-hidden bg-slate-900 text-white">
       {/* Background Images */}
       {slides.map((slide, index) => (
         <div

@@ -15,8 +15,8 @@ function App() {
 
   return (
     <div id="smooth-wrapper" className="min-h-screen bg-white font-sans text-slate-900">
-      <div id="smooth-content">
-        <NavBar />
+      <NavBar />
+      <div id="smooth-content" className="pt-16 lg:pt-20">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
