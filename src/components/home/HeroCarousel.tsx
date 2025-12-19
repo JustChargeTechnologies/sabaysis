@@ -98,7 +98,7 @@ export function HeroCarousel() {
           <p className="mt-4 text-lg font-medium tracking-wide text-slate-300 md:text-xl">
             {slides[activeIndex].subtitle}
           </p>
-          <button className="group mt-8 inline-flex items-center gap-2 rounded border border-white/50 px-8 py-3 text-sm font-semibold uppercase tracking-widest text-white transition-all hover:border-white hover:bg-white hover:text-slate-900">
+          <button className="group mt-8 inline-flex items-center gap-2 rounded-full border-2 border-white/50 px-10 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all hover:border-white hover:bg-white hover:text-slate-900 min-h-[48px] min-w-[160px] justify-center">
             Know More
           </button>
         </div>
@@ -142,14 +142,14 @@ export function HeroCarousel() {
         <div className="flex gap-4">
           <button
             onClick={handlePrev}
-            className="rounded-full border border-white/30 p-3 text-white transition-all hover:border-white hover:bg-white hover:text-slate-900"
+            className="rounded-full border border-white/30 p-3.5 text-white transition-all hover:border-white hover:bg-white hover:text-slate-900 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Previous Slide"
           >
             <ArrowLeft className="h-5 w-5" />
           </button>
           <button
             onClick={handleNext}
-            className="rounded-full border border-white/30 p-3 text-white transition-all hover:border-white hover:bg-white hover:text-slate-900"
+            className="rounded-full border border-white/30 p-3.5 text-white transition-all hover:border-white hover:bg-white hover:text-slate-900 min-h-[44px] min-w-[44px] flex items-center justify-center"
             aria-label="Next Slide"
           >
             <ArrowRight className="h-5 w-5" />

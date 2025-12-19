@@ -82,7 +82,7 @@ export function ValueProps() {
       </div>
 
       {/* Services cards */}
-      <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-12 grid gap-6 md:gap-8 md:grid-cols-2 xl:grid-cols-3">
         {services.map((service) => (
           <article
             key={service.title}
@@ -114,7 +114,7 @@ export function ValueProps() {
                 </p>
               </div>
               <div className="mt-6 flex items-center justify-between">
-                <button className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700 transition group-hover:text-emerald-600">
+                <button className="inline-flex items-center text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700 transition group-hover:text-emerald-600 min-h-[44px] px-2 -ml-2 rounded-lg hover:bg-emerald-50">
                   {service.ctaLabel}
                   <span className="ml-2 h-px w-8 bg-emerald-300 transition group-hover:w-10 group-hover:bg-emerald-500" />
                 </button>

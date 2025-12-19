@@ -27,13 +27,13 @@ export function ServiceDetail() {
           <div className="mt-6 flex flex-wrap justify-center gap-3">
             <Link
               to="/"
-              className="inline-flex items-center rounded-full bg-emerald-600 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500"
+              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500 min-h-[48px] min-w-[160px]"
             >
               Back to Home
             </Link>
             <Link
               to="/#services"
-              className="inline-flex items-center rounded-full border border-slate-300 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900 transition hover:border-slate-900 hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-full border-2 border-slate-300 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900 transition hover:border-slate-900 hover:bg-slate-50 min-h-[48px] min-w-[160px]"
             >
               View Services
             </Link>
@@ -71,7 +71,7 @@ export function ServiceDetail() {
           </div>
         </section>
 
-        <main className="mx-auto flex max-w-6xl flex-col gap-14 px-4 py-14">
+        <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 md:px-6 py-16 md:py-20">
           {/* Breadcrumb + meta */}
           <section className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-200 pb-6 text-xs text-slate-500">
             <div className="flex flex-wrap items-center gap-2">
@@ -101,7 +101,7 @@ export function ServiceDetail() {
               <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
                 {serviceDetail.whyChooseOurTitle}
               </h2>
-              <div className="grid gap-5 md:grid-cols-2">
+              <div className="grid gap-6 md:gap-8 md:grid-cols-2">
                 {serviceDetail.whyChooseOurItems.map((item, index) => (
                   <div
                     key={index}
@@ -125,7 +125,7 @@ export function ServiceDetail() {
                 {serviceDetail.servicesDescription}
               </p>
             </div>
-            <div className="grid gap-6 md:grid-cols-2">
+            <div className="grid gap-6 md:gap-8 md:grid-cols-2">
               {serviceDetail.features.map((feature, index) => (
                 <article
                   key={index}
@@ -149,7 +149,7 @@ export function ServiceDetail() {
                   {serviceDetail.typesTitle}
                 </h2>
               </div>
-              <div className="grid gap-6 md:grid-cols-2">
+              <div className="grid gap-6 md:gap-8 md:grid-cols-2">
                 {serviceDetail.typesItems.map((type, index) => (
                   <article
                     key={index}
@@ -164,7 +164,7 @@ export function ServiceDetail() {
           )}
 
           {/* Why Choose Sabaysis / Company Why */}
-          <section className="grid gap-10 md:grid-cols-[3fr,2fr] md:items-start">
+          <section className="grid gap-12 md:grid-cols-[3fr,2fr] md:items-start">
             <div className="space-y-6">
               <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
                 {serviceDetail.companyWhyTitle || serviceDetail.whyChooseTitle}
@@ -207,7 +207,7 @@ export function ServiceDetail() {
   // Default layout for other services
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
-      <main className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-16">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 md:px-6 py-16 md:py-20">
         {/* Hero */}
         <section className="space-y-4 border-b border-slate-200 pb-8">
           <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-700">
@@ -224,7 +224,7 @@ export function ServiceDetail() {
         </section>
 
         {/* Details */}
-        <section className="grid gap-10 md:grid-cols-[3fr,2fr] md:items-start">
+        <section className="grid gap-12 md:grid-cols-[3fr,2fr] md:items-start">
           <div className="space-y-6">
             <h2 className="text-lg font-semibold text-slate-900">
               What&apos;s included in this service
@@ -265,7 +265,7 @@ export function ServiceDetail() {
             </div>
             <Link
               to="/contact-us"
-              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500"
+              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500 min-h-[48px] min-w-[160px]"
             >
               Enquire now
             </Link>

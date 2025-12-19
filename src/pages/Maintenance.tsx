@@ -46,7 +46,7 @@ export function Maintenance() {
         </div>
       </section>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 md:px-6 py-16 md:py-20">
         {/* Intro */}
         <section className="space-y-4">
           <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
@@ -60,8 +60,8 @@ export function Maintenance() {
         </section>
 
         {/* Maintenance Services */}
-        <section className="space-y-8">
-          <div className="grid gap-6 md:grid-cols-2">
+        <section className="space-y-10">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
             <article className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
@@ -178,7 +178,7 @@ export function Maintenance() {
           <div className="mt-6 flex justify-center">
             <a
               href="/contact-us"
-              className="inline-flex items-center rounded-full bg-slate-900 px-8 py-3 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-full bg-slate-900 px-10 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-slate-800 min-h-[48px] min-w-[160px]"
             >
               Contact Us
             </a>

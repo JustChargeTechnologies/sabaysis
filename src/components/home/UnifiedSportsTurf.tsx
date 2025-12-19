@@ -5,7 +5,7 @@ import featureThree from '@/assets/Unified S/Untitled-design-2023-12-23T104210.1
 
 export function UnifiedSportsTurf() {
   return (
-    <section className="animate-fade-in-up px-4 py-16 sm:px-10">
+    <section className="animate-fade-in-up px-4 md:px-6 py-16 md:py-20">
       {/* Section Heading */}
       <div className="mx-auto max-w-3xl text-center">
         <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-600">
@@ -23,7 +23,7 @@ export function UnifiedSportsTurf() {
       </div>
 
       {/* Main two-column layout */}
-      <div className="mt-12 grid gap-10 lg:grid-cols-[1.5fr_1fr] lg:items-start">
+      <div className="mt-12 md:mt-16 grid gap-10 md:gap-12 lg:grid-cols-[1.5fr_1fr] lg:items-start">
         {/* Left: hero + feature grid */}
         <div className="space-y-8">
           {/* Hero card */}
@@ -48,7 +48,7 @@ export function UnifiedSportsTurf() {
           </div>
 
           {/* Our Core Features & Why Choose – as separate cards */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
             <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-slate-500">
                 Our Core Features
@@ -129,7 +129,7 @@ export function UnifiedSportsTurf() {
           </div>
 
           {/* Feature image strip */}
-          <div className="grid gap-4 sm:grid-cols-3">
+          <div className="grid gap-4 md:gap-6 sm:grid-cols-3">
             <div className="overflow-hidden rounded-2xl border border-slate-200 bg-white">
               <img
                 src={featureOne}
@@ -198,7 +198,7 @@ export function UnifiedSportsTurf() {
           </p>
 
           <form
-            className="mt-6 space-y-4"
+            className="mt-6 space-y-5"
             onSubmit={(event) => {
               event.preventDefault();
             }}
@@ -213,7 +213,7 @@ export function UnifiedSportsTurf() {
               <input
                 id="unified-first-name"
                 type="text"
-                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition focus:border-emerald-500 focus:ring-2"
+                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
                 placeholder="Enter your first name"
                 required
               />
@@ -225,7 +225,7 @@ export function UnifiedSportsTurf() {
               <input
                 id="unified-email"
                 type="email"
-                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition focus:border-emerald-500 focus:ring-2"
+                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
                 placeholder="you@example.com"
                 required
               />
@@ -237,7 +237,7 @@ export function UnifiedSportsTurf() {
               <input
                 id="unified-phone"
                 type="tel"
-                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition focus:border-emerald-500 focus:ring-2"
+                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
                 placeholder="Enter your phone number"
               />
             </div>
@@ -250,13 +250,13 @@ export function UnifiedSportsTurf() {
               </label>
               <textarea
                 id="unified-message"
-                className="min-h-[96px] w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition focus:border-emerald-500 focus:ring-2"
+                className="min-h-[96px] w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
                 placeholder="Enter your message..."
               />
             </div>
             <button
               type="submit"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-emerald-600 px-6 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-white transition hover:bg-emerald-700"
+              className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-emerald-600 px-6 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-white transition-all duration-200 hover:bg-emerald-700 active:scale-[0.98] min-h-[48px]"
             >
               Send Message
             </button>

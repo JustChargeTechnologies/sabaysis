@@ -111,7 +111,7 @@ export function NavBar() {
                   onMouseLeave={handleMouseLeave}
                 >
                   <DropdownMenuTrigger asChild>
-                    <button className="group inline-flex items-center gap-2 px-4 py-2 font-heading text-[13px] font-semibold uppercase tracking-wide text-slate-700 transition hover:text-emerald-600">
+                    <button className="group inline-flex items-center gap-2 px-5 py-3 font-heading text-[13px] font-semibold uppercase tracking-wide text-slate-700 transition hover:text-emerald-600 min-h-[44px]">
                       {item.label}
                       <ChevronDown className="h-3.5 w-3.5 transition-transform group-data-[state=open]:rotate-180" />
                     </button>
@@ -139,12 +139,12 @@ export function NavBar() {
                       <DropdownMenuItem key={subItem.title} asChild>
                         <Link
                           to={`${item.basePath}/${subItem.slug}`}
-                          className="group rounded-xl p-4 transition hover:bg-emerald-50"
+                          className="group rounded-xl p-5 transition hover:bg-emerald-50 min-h-[80px] flex flex-col justify-center"
                         >
                           <p className="font-heading text-sm font-semibold text-slate-900 group-hover:text-emerald-700">
                             {subItem.title}
                           </p>
-                          <p className="text-xs text-slate-500 line-clamp-2">
+                          <p className="text-xs text-slate-500 line-clamp-2 mt-1">
                             {subItem.body}
                           </p>
                         </Link>
@@ -157,7 +157,7 @@ export function NavBar() {
               <Link
                 key={item.label}
                 to={item.href}
-                className="px-4 py-2 font-heading text-[13px] font-semibold uppercase tracking-wide text-slate-700 transition hover:text-emerald-600"
+                className="px-5 py-3 font-heading text-[13px] font-semibold uppercase tracking-wide text-slate-700 transition hover:text-emerald-600 min-h-[44px] inline-flex items-center"
               >
                 {item.label}
               </Link>
@@ -167,7 +167,7 @@ export function NavBar() {
 
         {/* RIGHT ACTION */}
         <div className="hidden lg:flex">
-          <button className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-5 py-2 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-emerald-600">
+          <button className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-emerald-600 min-h-[44px] min-w-[120px] justify-center">
             <Globe className="h-4 w-4" />
             Global
           </button>
@@ -175,10 +175,11 @@ export function NavBar() {
 
         {/* MOBILE TOGGLE */}
         <button
-          className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 lg:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 lg:hidden min-h-[44px] min-w-[44px]"
           onClick={() => setIsMobileOpen((p) => !p)}
+          aria-label="Toggle menu"
         >
-          {isMobileOpen ? <X /> : <Menu />}
+          {isMobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </button>
       </div>
 
@@ -198,7 +199,7 @@ export function NavBar() {
                         key={sub.slug}
                         to={`${item.basePath}/${sub.slug}`}
                         onClick={() => setIsMobileOpen(false)}
-                        className="block rounded-lg px-4 py-3 text-sm font-semibold text-slate-900 hover:bg-white"
+                        className="block rounded-lg px-4 py-3.5 text-sm font-semibold text-slate-900 hover:bg-white min-h-[44px] flex items-center"
                       >
                         {sub.title}
                       </Link>
@@ -210,14 +211,14 @@ export function NavBar() {
                   key={item.label}
                   to={item.href}
                   onClick={() => setIsMobileOpen(false)}
-                  className="block rounded-xl px-4 py-3 text-sm font-bold uppercase tracking-wider text-slate-900 hover:bg-slate-50"
+                  className="block rounded-xl px-4 py-3.5 text-sm font-bold uppercase tracking-wider text-slate-900 hover:bg-slate-50 min-h-[44px] flex items-center"
                 >
                   {item.label}
                 </Link>
               )
             )}
 
-            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3 text-xs font-bold uppercase tracking-widest text-white shadow-lg">
+            <button className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-600 py-3.5 text-xs font-bold uppercase tracking-widest text-white shadow-lg min-h-[44px]">
               <Globe className="h-4 w-4" />
               Visit Global Site
             </button>

@@ -33,7 +33,7 @@ export function Testimonials() {
   }, []);
 
   return (
-    <section className="space-y-8">
+    <section className="space-y-10 md:space-y-12">
       <div className="text-center">
         <p className="text-xs uppercase tracking-[0.6em] text-slate-500">Testimonials</p>
         <h2 className="mt-3 text-3xl font-semibold text-slate-900">

@@ -30,7 +30,7 @@ export function PrimaryCTA() {
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:max-w-xs">
-            <button className="rounded-full bg-white px-8 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-slate-900 transition hover:bg-slate-200">
+            <button className="rounded-full bg-white px-10 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-slate-900 transition-all duration-200 hover:bg-slate-200 active:scale-[0.98] min-h-[48px] min-w-[220px] flex items-center justify-center">
               Drop Your Enquiry
             </button>
           </div>

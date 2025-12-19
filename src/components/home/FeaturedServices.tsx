@@ -1,7 +1,7 @@
 export function FeaturedServices() {
   return (
     <section className="relative w-full px-4 py-16 lg:px-0">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 lg:flex-row lg:items-center">
+      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12 md:gap-16 lg:flex-row lg:items-center">
         {/* Left: intro content */}
         <div className="flex-1 space-y-6">
           <p className="text-xs font-semibold uppercase tracking-[0.35em] text-emerald-600">
@@ -70,7 +70,7 @@ export function FeaturedServices() {
             </div>
 
             <div className="mt-8">
-              <button className="inline-flex items-center justify-center rounded-full border-2 border-emerald-600 px-10 py-3 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-700 transition-colors hover:bg-emerald-600 hover:text-white">
+              <button className="inline-flex items-center justify-center rounded-full border-2 border-emerald-600 px-10 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-emerald-700 transition-all duration-200 hover:bg-emerald-600 hover:text-white active:scale-[0.98] min-h-[48px] min-w-[200px]">
                 Drop Your Enquiry
               </button>
             </div>

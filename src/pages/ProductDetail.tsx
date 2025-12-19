@@ -25,13 +25,13 @@ export function ProductDetail() {
           <div className="mt-6 flex justify-center gap-3">
             <Link
               to="/"
-              className="inline-flex items-center rounded-full bg-slate-900 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-slate-800"
+              className="inline-flex items-center justify-center rounded-full bg-slate-900 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-slate-800 min-h-[48px] min-w-[160px]"
             >
               Back to Home
             </Link>
             <Link
               to="/#products"
-              className="inline-flex items-center rounded-full border border-slate-300 px-6 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900 transition hover:border-slate-900 hover:bg-slate-50"
+              className="inline-flex items-center justify-center rounded-full border-2 border-slate-300 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-slate-900 transition hover:border-slate-900 hover:bg-slate-50 min-h-[48px] min-w-[160px]"
             >
               View Products
             </Link>
@@ -43,7 +43,7 @@ export function ProductDetail() {
 
   return (
     <div className="min-h-screen bg-white text-slate-900">
-      <main className="mx-auto flex max-w-6xl flex-col gap-12 px-4 py-16">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 md:px-6 py-16 md:py-20">
         {/* Hero */}
         <section className="space-y-4">
           <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-700">
@@ -60,7 +60,7 @@ export function ProductDetail() {
         </section>
 
         {/* Details */}
-        <section className="grid gap-10 md:grid-cols-[3fr,2fr] md:items-start">
+        <section className="grid gap-12 md:grid-cols-[3fr,2fr] md:items-start">
           <div className="space-y-6">
             <h2 className="text-lg font-semibold text-slate-900">Key specifications</h2>
             <ul className="space-y-3 text-sm leading-relaxed text-slate-700">
@@ -98,7 +98,7 @@ export function ProductDetail() {
             </div>
             <Link
               to="/contact-us"
-              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-5 py-2.5 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500"
+              className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500 min-h-[48px] min-w-[180px]"
             >
               Request&nbsp;quote
             </Link>

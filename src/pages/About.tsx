@@ -55,9 +55,9 @@ export function About() {
         </div>
       </section>
 
-      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 py-16">
+      <main className="mx-auto flex max-w-6xl flex-col gap-16 px-4 md:px-6 py-16 md:py-20">
         {/* About Us */}
-        <section className="grid gap-10 md:grid-cols-[3fr,2fr] md:items-start">
+        <section className="grid gap-12 md:grid-cols-[3fr,2fr] md:items-start">
           <div>
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">
               About Us
@@ -88,7 +88,7 @@ export function About() {
         </section>
 
         {/* Quality Control */}
-        <section className="space-y-10">
+        <section className="space-y-12">
           <div className="max-w-3xl">
             <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-700">
               Quality Control
@@ -102,9 +102,9 @@ export function About() {
               and improved.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
-            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
-              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
+            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
+              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <div className="relative z-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
                   01
@@ -119,8 +119,8 @@ export function About() {
                 </p>
               </div>
             </article>
-            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
-              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
+              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <div className="relative z-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
                   02
@@ -134,8 +134,8 @@ export function About() {
                 </p>
               </div>
             </article>
-            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
-              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
+              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <div className="relative z-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
                   03
@@ -150,8 +150,8 @@ export function About() {
                 </p>
               </div>
             </article>
-            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
-              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition group-hover:opacity-100" />
+            <article className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:border-emerald-100 hover:shadow-lg">
+              <div className="absolute inset-0 bg-linear-to-tr from-emerald-50/40 via-transparent to-transparent opacity-0 transition-opacity duration-200 group-hover:opacity-100" />
               <div className="relative z-10">
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
                   04
@@ -169,7 +169,7 @@ export function About() {
         </section>
 
         {/* Mission & Vision */}
-        <section className="grid gap-8 md:grid-cols-2">
+        <section className="grid gap-8 md:gap-10 md:grid-cols-2">
           <article className="rounded-3xl border border-slate-200 bg-slate-50/60 p-6 shadow-sm">
             <h2 className="text-2xl font-semibold tracking-tight text-slate-900">Our Mission</h2>
             <p className="mt-4 text-sm leading-relaxed text-slate-600 md:text-base">
@@ -190,7 +190,7 @@ export function About() {
         </section>
 
         {/* Social Responsibility */}
-        <section className="space-y-10">
+        <section className="space-y-12">
           <div className="max-w-3xl">
             <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-700">
               Social Responsibility
@@ -203,7 +203,7 @@ export function About() {
               environment, our people, and the communities we work with every day.
             </p>
           </div>
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-6 md:gap-8 md:grid-cols-2">
             <article className="group flex flex-col justify-between rounded-3xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm transition hover:-translate-y-1 hover:border-emerald-100 hover:bg-white hover:shadow-lg">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.25em] text-emerald-700">
