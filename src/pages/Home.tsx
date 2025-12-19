@@ -5,6 +5,7 @@ import { UnifiedSportsTurf } from '@/components/home/UnifiedSportsTurf';
 import { Testimonials } from '@/components/home/Testimonials';
 import { ValueProps } from '@/components/home/ValueProps';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import { Questions } from '@/components/home/question';
 
 export function Home() {
   usePageTitle('Home');
@@ -35,8 +36,13 @@ export function Home() {
             <Testimonials />
           </div>
         </section>
+        <section className="bg-white-50 py-16">
+          <div className="mx-auto max-w-6xl px-4">
+            <Questions />
+          </div>
+        </section>
 
-        <section className="bg-white py-16">
+        <section className="bg-slate-50 py-16">
           <div className="mx-auto max-w-6xl px-4">
             <PrimaryCTA />
           </div>
