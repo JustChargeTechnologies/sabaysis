@@ -14,8 +14,6 @@ import {
 
 import { services } from '@/data/catalog';
 
-/* ---------------- TYPES ---------------- */
-
 type NavSubItem = {
   title: string;
   body: string;
@@ -34,7 +32,6 @@ type NavItem =
       items: NavSubItem[];
     };
 
-/* ---------------- DATA ---------------- */
 
 const serviceNavItems: NavSubItem[] = services.map((s) => ({
   title: s.title,
@@ -42,7 +39,6 @@ const serviceNavItems: NavSubItem[] = services.map((s) => ({
   slug: s.slug,
 }));
 
-// Static products removed in favor of dynamic fetching
 
 const initialNavItems: NavItem[] = [
   { label: 'About', href: '/about' },
@@ -61,8 +57,6 @@ const initialNavItems: NavItem[] = [
   { label: 'Maintenance', href: '/maintenance' },
   { label: 'Contact', href: '/contact-us' },
 ];
-
-/* ---------------- COMPONENT ---------------- */
 
 export function NavBar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
@@ -112,7 +106,6 @@ export function NavBar() {
     <header className="fixed top-0 left-0 right-0 z-50 w-full border-b border-slate-200/60 bg-white/80 backdrop-blur-xl shadow-sm">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 lg:h-20 lg:px-8">
 
-        {/* LOGO */}
         <Link to="/" className="flex items-center gap-3">
           <img
             src={ajarLogo}
@@ -121,7 +114,6 @@ export function NavBar() {
           />
         </Link>
 
-        {/* DESKTOP NAV */}
         <nav className="hidden items-center gap-6 lg:flex">
           {navItems.map((item) =>
             'items' in item ? (
@@ -190,7 +182,6 @@ export function NavBar() {
           )}
         </nav>
 
-        {/* RIGHT ACTION */}
         <div className="hidden lg:flex">
           <button className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-6 py-3.5 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-emerald-600 min-h-[44px] min-w-[120px] justify-center">
             <Globe className="h-4 w-4" />
@@ -198,7 +189,6 @@ export function NavBar() {
           </button>
         </div>
 
-        {/* MOBILE TOGGLE */}
         <button
           className="flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 lg:hidden min-h-[44px] min-w-[44px]"
           onClick={() => setIsMobileOpen((p) => !p)}
@@ -208,7 +198,6 @@ export function NavBar() {
         </button>
       </div>
 
-      {/* MOBILE MENU */}
       {isMobileOpen && (
         <div className="border-t border-slate-100 bg-white lg:hidden">
           <nav className="space-y-6 p-5">

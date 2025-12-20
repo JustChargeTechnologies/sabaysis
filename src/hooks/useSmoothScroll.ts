@@ -10,16 +10,13 @@ export function useSmoothScroll() {
   const isAdmin = location.pathname.startsWith('/admin');
 
   useEffect(() => {
-    if (isAdmin) return; // Disable smooth scroll for admin panel
+    if (isAdmin) return;
 
-    // Dynamically import ScrollSmoother (premium plugin)
-    // Note: ScrollSmoother requires a GSAP membership
     import('gsap/ScrollSmoother')
       .then((module) => {
         const ScrollSmoother = module.ScrollSmoother;
         gsap.registerPlugin(ScrollSmoother);
 
-        // Create the smooth scroller
         const smoother = ScrollSmoother.create({
           smooth: 2,
           effects: true,
@@ -28,10 +25,8 @@ export function useSmoothScroll() {
           content: '#smooth-content',
         });
 
-        // Store smoother instance for cleanup
         (window as any).__scrollSmoother = smoother;
 
-        // Cleanup function
         return () => {
           if (smoother) {
             smoother.kill();
@@ -41,10 +36,8 @@ export function useSmoothScroll() {
       })
       .catch((error) => {
         console.warn('ScrollSmoother not available. Using standard scrolling.', error);
-        // Fallback: just use ScrollTrigger without smooth scrolling
       });
 
-    // Cleanup on unmount
     return () => {
       if ((window as any).__scrollSmoother) {
         (window as any).__scrollSmoother.kill();

@@ -16,11 +16,14 @@ import { Messages } from './pages/admin/Messages';
 import { Products } from './pages/admin/Products';
 import { AdminLayout, ProtectedRoute } from './components/admin/AdminLayout';
 
+import { ScrollToTop } from './components/layout/ScrollToTop';
+
 function App() {
   useSmoothScroll();
 
   return (
     <div id="smooth-wrapper" className="min-h-screen bg-white font-sans text-slate-900">
+      <ScrollToTop />
       <Routes>
           <Route
           path="/*"
