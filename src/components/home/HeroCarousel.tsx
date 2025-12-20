@@ -6,8 +6,8 @@ import banner1 from '../../assets/Hero/banner1.jpg';
 const slides = [
   {
     id: 1,
-    subtitle: 'Sabaysis Sports & Infra',
-    title: "Building India's Next-Gen Sports Infrastructure",
+    // subtitle: 'Sabaysis Sports & Infra',
+    // title: "Building India's Next-Gen Sports Infrastructure",
     image: banner1,
   },
   {
