@@ -1,11 +1,17 @@
 import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
 export function useSmoothScroll() {
+  const location = useLocation();
+  const isAdmin = location.pathname.startsWith('/admin');
+
   useEffect(() => {
+    if (isAdmin) return; // Disable smooth scroll for admin panel
+
     // Dynamically import ScrollSmoother (premium plugin)
     // Note: ScrollSmoother requires a GSAP membership
     import('gsap/ScrollSmoother')

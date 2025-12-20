@@ -1,19 +1,14 @@
-import { MapPin, Phone, Mail, Loader2, CheckCircle2 } from 'lucide-react';
+import { MapPin, Phone, Mail } from 'lucide-react';
 import { usePageTitle } from '@/hooks/usePageTitle';
 import { useState, useEffect } from 'react';
+import { ContactForm } from '@/components/ContactForm';
+import { useSearchParams } from 'react-router-dom';
 
 export function ContactUs() {
   usePageTitle('Contact Us');
   const [mapError, setMapError] = useState(false);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [formData, setFormData] = useState({
-    firstName: '',
-    email: '',
-    phone: '',
-    message: '',
-  });
-  const [messageCount, setMessageCount] = useState(0);
+  const [searchParams] = useSearchParams();
+  const productName = searchParams.get('product') || '';
 
   useEffect(() => {
     // Set a timeout to detect if map fails to load
@@ -98,114 +93,7 @@ export function ContactUs() {
               Share a few details and we&apos;ll respond with a tailored quote or clarification.
             </p>
 
-            <form
-              className="mt-6 space-y-5"
-              onSubmit={async (e) => {
-                e.preventDefault();
-                // Immediate feedback - Doherty's Law (<400ms)
-                setIsSubmitting(true);
-
-                // Simulate API call with optimistic UI
-                await new Promise((resolve) => setTimeout(resolve, 300));
-
-                setIsSubmitting(false);
-                setIsSubmitted(true);
-
-                // Reset form after showing success
-                setTimeout(() => {
-                  setIsSubmitted(false);
-                  setFormData({ firstName: '', email: '', phone: '', message: '' });
-                  setMessageCount(0);
-                }, 3000);
-              }}
-            >
-              <div className="grid gap-4 md:grid-cols-2">
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.firstName}
-                    onChange={(e) => {
-                      setFormData({ ...formData, firstName: e.target.value });
-                    }}
-                    className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all duration-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
-                    placeholder="Enter your first name"
-                    disabled={isSubmitting || isSubmitted}
-                  />
-                </div>
-                <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                    Email Address
-                  </label>
-                  <input
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => {
-                      setFormData({ ...formData, email: e.target.value });
-                    }}
-                    className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all duration-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
-                    placeholder="name@example.com"
-                    disabled={isSubmitting || isSubmitted}
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                  Phone Number
-                </label>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => {
-                    setFormData({ ...formData, phone: e.target.value });
-                  }}
-                  className="rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all duration-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
-                  placeholder="+91 ..."
-                  disabled={isSubmitting || isSubmitted}
-                />
-              </div>
-              <div className="flex flex-col gap-1.5">
-                <div className="flex items-center justify-between">
-                  <label className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                    Enter your message...
-                  </label>
-                  <span className="text-[10px] text-slate-400">{messageCount} / 180</span>
-                </div>
-                <textarea
-                  rows={4}
-                  maxLength={180}
-                  value={formData.message}
-                  onChange={(e) => {
-                    setFormData({ ...formData, message: e.target.value });
-                    setMessageCount(e.target.value.length);
-                  }}
-                  className="resize-none rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm text-slate-900 outline-none transition-all duration-200 focus:border-emerald-500 focus:ring-2 focus:ring-emerald-500/20"
-                  placeholder="Tell us about your project or requirements (max 180 characters)."
-                  disabled={isSubmitting || isSubmitted}
-                />
-              </div>
-              <button
-                type="submit"
-                disabled={isSubmitting || isSubmitted}
-                className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-full bg-slate-900 px-10 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition-all duration-200 hover:bg-slate-800 active:scale-[0.98] disabled:opacity-70 disabled:cursor-not-allowed min-h-[48px]"
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="h-4 w-4 animate-spin" />
-                    Sending...
-                  </>
-                ) : isSubmitted ? (
-                  <>
-                    <CheckCircle2 className="h-4 w-4" />
-                    Message Sent!
-                  </>
-                ) : (
-                  'Send Message'
-                )}
-              </button>
-            </form>
+            <ContactForm initialSubject={productName} className="mt-6" />
           </div>
 
           {/* Map - Right Half */}

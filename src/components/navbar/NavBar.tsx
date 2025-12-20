@@ -1,7 +1,8 @@
 import { Link } from 'react-router-dom';
 import { ChevronDown, Globe, Menu, X } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import ajarLogo from '../../assets/ajarlogo.png';
+import { API_ENDPOINTS } from '@/config/api';
 
 import {
   DropdownMenu,
@@ -11,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from '../ui/dropdown-menu';
 
-import { services, products } from '@/data/catalog';
+import { services } from '@/data/catalog';
 
 /* ---------------- TYPES ---------------- */
 
@@ -41,13 +42,9 @@ const serviceNavItems: NavSubItem[] = services.map((s) => ({
   slug: s.slug,
 }));
 
-const productNavItems: NavSubItem[] = products.map((p) => ({
-  title: p.title,
-  body: p.body,
-  slug: p.slug,
-}));
+// Static products removed in favor of dynamic fetching
 
-const navItems: NavItem[] = [
+const initialNavItems: NavItem[] = [
   { label: 'About', href: '/about' },
   {
     label: 'Services',
@@ -59,7 +56,7 @@ const navItems: NavItem[] = [
     label: 'Products',
     description: 'Turf • Nets • Equipment',
     basePath: '/products',
-    items: productNavItems,
+    items: [], 
   },
   { label: 'Maintenance', href: '/maintenance' },
   { label: 'Contact', href: '/contact-us' },
@@ -70,7 +67,35 @@ const navItems: NavItem[] = [
 export function NavBar() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const [navItems, setNavItems] = useState<NavItem[]>(initialNavItems);
   const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const res = await fetch(API_ENDPOINTS.PRODUCTS);
+        if (res.ok) {
+          const data = await res.json();
+          const productNavItems: NavSubItem[] = data.map((p: { title: string; body: string; slug: string }) => ({
+            title: p.title,
+            body: p.body,
+            slug: p.slug,
+          }));
+
+          setNavItems(prev => prev.map(item => {
+            if (item.label === 'Products' && 'items' in item) {
+              return { ...item, items: productNavItems };
+            }
+            return item;
+          }));
+        }
+      } catch (error) {
+        console.error("Failed to fetch products for navigation", error);
+      }
+    };
+
+    fetchProducts();
+  }, []);
 
   const handleMouseEnter = (label: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);

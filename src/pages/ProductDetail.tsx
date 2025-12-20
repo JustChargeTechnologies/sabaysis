@@ -1,12 +1,53 @@
 import { Link, useParams } from 'react-router-dom';
-import { getProductBySlug } from '@/data/catalog';
 import { usePageTitle } from '@/hooks/usePageTitle';
+import { useState, useEffect } from 'react';
+import { API_ENDPOINTS } from '@/config/api';
+
+type ProductItem = {
+  slug: string;
+  title: string;
+  body: string;
+};
 
 export function ProductDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const product = slug ? getProductBySlug(slug) : undefined;
+  const [product, setProduct] = useState<ProductItem | undefined>(undefined);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchProduct() {
+      try {
+        const res = await fetch(`${API_ENDPOINTS.PRODUCTS}/${slug}`);
+        if (res.ok) {
+          const data = await res.json();
+          setProduct(data);
+        } else {
+          setProduct(undefined);
+        }
+      } catch (error) {
+        console.error("Failed to fetch product", error);
+        setProduct(undefined);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    if (slug) {
+      fetchProduct();
+    } else {
+      setLoading(false);
+    }
+  }, [slug]);
 
   usePageTitle(product ? `${product.title} Product` : 'Product not found');
+
+  if (loading) {
+    return (
+      <div className="min-h-[60vh] flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-emerald-600"></div>
+      </div>
+    );
+  }
 
   if (!product) {
     return (
@@ -97,7 +138,7 @@ export function ProductDetail() {
               <p>Call +91 98970 53591 or send us a message to receive a customised proposal.</p>
             </div>
             <Link
-              to="/contact-us"
+              to={`/contact-us?product=${encodeURIComponent(product.title)}`}
               className="inline-flex items-center justify-center rounded-full bg-emerald-600 px-8 py-4 text-xs font-semibold uppercase tracking-[0.3em] text-white transition hover:bg-emerald-500 min-h-[48px] min-w-[180px]"
             >
               Request&nbsp;quote

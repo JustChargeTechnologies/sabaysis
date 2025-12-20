@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
+@custom-variant dark (&:is(.dark *));
+
 @layer base {
   :root {
     font-family: "Montserrat", system-ui, -apple-system, sans-serif;
@@ -137,28 +139,28 @@
     transition-duration: 150ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   .transition-instant {
     transition-duration: 100ms;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Immediate hover feedback */
   button, a, [role="button"] {
     transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Fast input focus transitions */
   input, textarea, select {
     transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Immediate visual feedback on interaction */
   button:active {
     transform: scale(0.98);
     transition: transform 100ms cubic-bezier(0.4, 0, 0.2, 1);
   }
-  
+
   /* Ensure navbar stays fixed and not affected by smooth scroll transforms */
   header[class*="fixed"] {
     transform: none !important;

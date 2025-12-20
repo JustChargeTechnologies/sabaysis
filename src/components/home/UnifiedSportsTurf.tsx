@@ -1,4 +1,5 @@
 import unifiedMain from '@/assets/Unified S/synthetic-lawn-2048px-802551536-2x1-1.webp';
+import { ContactForm } from '../ContactForm';
 import featureOne from '@/assets/Unified S/Untitled-design-2023-12-23T101940.389.webp';
 import featureTwo from '@/assets/Unified S/Untitled-design-2023-12-23T104200.082.webp';
 import featureThree from '@/assets/Unified S/Untitled-design-2023-12-23T104210.112.webp';
@@ -197,70 +198,7 @@ export function UnifiedSportsTurf() {
             Contact us today to bring your vision to life.
           </p>
 
-          <form
-            className="mt-6 space-y-5"
-            onSubmit={(event) => {
-              event.preventDefault();
-            }}
-          >
-            <div className="space-y-1.5">
-              <label
-                htmlFor="unified-first-name"
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600"
-              >
-                First Name
-              </label>
-              <input
-                id="unified-first-name"
-                type="text"
-                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
-                placeholder="Enter your first name"
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label htmlFor="unified-email" className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                Email Address
-              </label>
-              <input
-                id="unified-email"
-                type="email"
-                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
-                placeholder="you@example.com"
-                required
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label htmlFor="unified-phone" className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600">
-                Phone Number
-              </label>
-              <input
-                id="unified-phone"
-                type="tel"
-                className="w-full rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
-                placeholder="Enter your phone number"
-              />
-            </div>
-            <div className="space-y-1.5">
-              <label
-                htmlFor="unified-message"
-                className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-600"
-              >
-                Message
-              </label>
-              <textarea
-                id="unified-message"
-                className="min-h-[96px] w-full rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none ring-emerald-500/10 transition-all duration-200 focus:border-emerald-500 focus:ring-2"
-                placeholder="Enter your message..."
-              />
-            </div>
-            <button
-              type="submit"
-              className="mt-2 inline-flex w-full items-center justify-center rounded-full bg-emerald-600 px-6 py-4 text-xs font-semibold uppercase tracking-[0.35em] text-white transition-all duration-200 hover:bg-emerald-700 active:scale-[0.98] min-h-[48px]"
-            >
-              Send Message
-            </button>
-          </form>
+          <ContactForm initialSubject="Unified Sports Turf Inquiry" className="mt-6" />
 
           <p className="mt-4 text-xs text-slate-500">
             Our team will get back to you within 1–2 business days with tailored proposals for your project.
