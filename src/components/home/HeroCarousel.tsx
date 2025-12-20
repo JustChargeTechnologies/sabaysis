@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
+import banner1 from '../../assets/Hero/banner1.jpg';
+
 const slides = [
   {
     id: 1,
     subtitle: 'Sabaysis Sports & Infra',
     title: "Building India's Next-Gen Sports Infrastructure",
-    image: 'https://images.unsplash.com/photo-1577223625816-7546f13df25d?auto=format&fit=crop&w=2000&q=80',
+    image: banner1,
   },
   {
     id: 2,
