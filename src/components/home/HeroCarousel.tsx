@@ -47,7 +47,6 @@ export function HeroCarousel() {
     let startTime = Date.now();
     const duration = 10000;
     
-    // Reset progress when index changes
     setProgress(0);
     startTime = Date.now();
 
@@ -55,10 +54,8 @@ export function HeroCarousel() {
       const elapsed = Date.now() - startTime;
       const newProgress = Math.min((elapsed / duration) * 100, 100);
       setProgress(newProgress);
-
-      // Show thumbnails for first 2 seconds (0-2000ms) and last 2 seconds (8000-10000ms)
-      const showThumbnailStart = 2000; // 2 seconds from start
-      const showThumbnailEnd = duration - 2000; // 2 seconds before end
+      const showThumbnailStart = 2000; 
+      const showThumbnailEnd = duration - 2000; 
       const shouldShow = elapsed < showThumbnailStart || elapsed > showThumbnailEnd;
       setShowThumbnails(shouldShow);
 
@@ -73,7 +70,6 @@ export function HeroCarousel() {
 
   return (
     <section className="relative h-[calc(100vh-4rem)] lg:h-[calc(100vh-5rem)] w-full overflow-hidden bg-slate-900 text-white">
-      {/* Background Images */}
       {slides.map((slide, index) => (
         <div
           key={slide.id}
@@ -86,12 +82,9 @@ export function HeroCarousel() {
             alt={slide.title}
             className="h-full w-full object-cover"
           />
-          {/* Dark Overlay Gradient */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
         </div>
       ))}
-
-      {/* Main Content (Left) */}
       <div className="absolute inset-0 z-10 flex flex-col justify-end px-6 pb-20 md:px-16 md:pb-24 lg:w-2/3">
         <div className="max-w-3xl transform transition-all duration-700">
           <h1 className="text-4xl font-bold leading-tight tracking-tight sm:text-5xl md:text-6xl">
@@ -106,7 +99,6 @@ export function HeroCarousel() {
         </div>
       </div>
 
-      {/* Right Side Thumbnails Strip */}
       <div 
         className={`absolute bottom-24 right-8 z-20 hidden items-end gap-4 transition-opacity duration-500 lg:flex ${showThumbnails ? 'opacity-100' : 'opacity-0'}`}
       >
@@ -130,9 +122,7 @@ export function HeroCarousel() {
         ))}
       </div>
 
-      {/* Bottom Navigation Controls */}
       <div className="absolute bottom-10 right-8 z-20 flex items-center gap-8 md:right-16">
-        {/* Progress Line */}
         <div className="relative h-[2px] w-32 bg-white/20 md:w-48">
           <div
             className="absolute left-0 top-0 h-full bg-white transition-all duration-75 ease-linear"
@@ -140,7 +130,6 @@ export function HeroCarousel() {
           />
         </div>
         
-        {/* Arrows */}
         <div className="flex gap-4">
           <button
             onClick={handlePrev}
